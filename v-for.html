@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for</title>
+</head>
+<body>
+    <!-- 响应式 -->
+    <div id="app">
+        <ul>
+            <ol v-for="(it,index) in arr">地方： {{it}}  --- 索引下标: {{index}}</ol>
+        </ul>
+        <h2 v-for="item in student">姓名：{{item.username}} 年龄: {{item.age}}</h2>
+    </div>
+    <!-- 导入开发版本的vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app", //挂载点
+            data:{
+                arr: ["北京","上海","天津","南京","杭州"],
+                student: [
+                    {username: "A",age: 11},
+                    {username: "B",age: 15},
+                    {username: "C",age: 24},
+                    {username: "D",age: 29},
+                    {username: "E",age: 34},
+                    {username: "F",age: 7}
+                ]
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

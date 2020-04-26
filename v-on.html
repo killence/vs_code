@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on</title>
+</head>
+<body>
+    <!-- 为元素绑定事件 v-on: 相当于@-->
+    <div id="app">
+        <input value="v-on指令" type="button" v-on:click="doit">
+        <input value="v-on指令" type="button" @click="doit">
+        <input value="双击" type="button" @dblclick="doit">
+        <h2 @click="getusername">{{ username}}</h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data:{
+                username: "killen"
+            },
+             //绑定方法
+            methods:{
+                doit:function(){
+                    alert("Hello World!");
+                },
+                getusername:function(){
+                    //console.log(this.getusername);
+                    //获取数据
+                    this.username+="123"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

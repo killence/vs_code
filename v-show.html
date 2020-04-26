@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-show</title>
+</head>
+<body>
+    <!-- 操作样式 -->
+    <!-- 元素的隐藏状态，true显示，false隐藏 -->
+    <div id="app">
+        <button @click="changeIsshow">点击显示或隐藏</button>
+        <img src="./images/123.jpg" v-show="flag">
+        <img src="./images/123.jpg" v-show="age>=18">
+    </div>
+    <!-- 导入开发版本的vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data:{
+               flag: false,
+               age: 16
+            },
+            methods:{
+                changeIsshow:function(){
+                    this.flag = !this.flag
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model</title>
+</head>
+<body>  
+    <!-- 双向绑定，获取表单的值 -->
+    <div id="app">
+        <input type="text" @keyup.enter="updatedata" v-model="message">
+        <input type="button" value="获取表单的值" @click="getMessage">
+        <h2>{{ message }}</h2>
+    </div>
+    <!-- 导入开发版本的vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data:{
+                message: "世界你好！"
+            },
+            methods:{
+                updatedata:function(){
+                    this.message = "Hello World!"
+                },
+                getMessage:function(){
+                    alert(this.message);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

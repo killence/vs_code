@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue学习</title>
+</head>
+<body>
+    {{ message }}
+    <div id="app" class="app">
+        {{message}}
+    </div>   
+    <!-- 导入开发版本的vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //Vue 的作用范围在其内部就可以
+        //可以支持双标签，但body挂载不行
+        var app = new Vue({
+            //el: "#app",  //挂在点 ,id选着器
+            el: ".app", // class选择器 
+            data:{  //数据
+                message: "Hello World!"
+            }
+        })
+    </script>
+</body>
+</html>

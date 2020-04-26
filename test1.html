@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test01</title>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="sub">-</button>
+        <!-- <button @click="sub">-</button> -->
+        <!-- <span>{{i}}</span> -->
+        <span v-text="i"></span>
+        <button @click="add">+</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app", //挂载点
+            data:{ //数据绑定
+                i: 0
+            },
+            methods:{ //方法绑定
+                sub:function(){
+                    if(this.i > 0) {
+                        this.i -= 1
+                    }
+                    else{
+                        alert("不能再小了！")
+                    }
+                },
+                add:function(){
+                    if(this.i < 10){
+                        this.i += 1
+                    }
+                    else{
+                    alert("不能在大了！")
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
