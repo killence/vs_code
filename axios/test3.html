@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天气查询</title>
+    <link ref="stylesheet" href="/css/index_weather.css" />
+    <link ref="stylesheet" href="/css/reset.css" />
+    <!-- <script src="../js/main.js"></script> -->
+</head>
+<body>
+    <div class="wrap" id="app">
+        <div class="search_form">
+            <div class="logo"><img src="../images/logo.png" alt="logo" /></div>
+            <div class="form_group">
+                <input type="text"  v-model="city" class="input_txt" placeholder="请输入查询的天气" @keyup.enter="searchWeather" />
+                <button class="input_sub" @click="searchWeather">
+                    搜 索
+                </button>
+            </div>
+            <div class="hotkey">
+                <a href="javascript:void(0);" @click="clickSearchs('北京')">北京</a>
+                <a href="javascript:void(0);" @click="clickSearchs('上海')">上海</a>
+                <a href="javascript:void(0);" @click="clickSearchs('广州')">广州</a>
+                <a href="javascript:void(0);" @click="clickSearchs('深圳')">深圳</a>
+            </div>
+        </div>
+        <ul class="weather_list">
+            <li v-for="item in weatherList" v-show="weatherList.length!=0">
+                <div class="info_type">
+                    <span class="iconfont"> 
+                        {{ item.type }}
+                    </span>
+                </div>
+                <div class="info_temp">
+                    <b> {{ item.low }}</b>
+                    ~
+                    <b> {{ item.high }}</b>
+                </div>
+                <div class="info_date"><span> {{ item.date }}</span></div>
+            </li>
+        </ul>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- 导入开发版本的vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+                el: "#app",
+                data: {
+                    city: '',
+                    weatherList: []
+                },
+                methods: {
+                    searchWeather: function () {
+                        var that = this;
+                        console.log(this.city);
+                        axios.get('http://wthrcdn.etouch.cn/weather_mini?city=' + this.city)
+                            .then(function (response) {
+                                that.weatherList = response.data.data.forecast
+                            })
+                            .catch(function (err) { })
+                    },
+                    clickSearchs: function (city) {
+                        this.city = city;
+                        this.searchWeather();
+                    }
+                }
+            })
+    </script>
+</body>
+</html>
